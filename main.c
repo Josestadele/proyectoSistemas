@@ -1,6 +1,8 @@
 #include <stdio.h>
 #include<stdlib.h>
+#include<string.h>
 #include"front.h"
+#include "archivos.h"
 
 
 void main(int argc, char const *argv[]) {
@@ -15,8 +17,8 @@ void main(int argc, char const *argv[]) {
     exit(0);
 
   if(opcion==2)
-  exit(0);
-  
+  leerArchivo();
+
    if (opcion==1)
   datosMatriz();
 
