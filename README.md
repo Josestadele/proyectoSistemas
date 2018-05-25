@@ -1,2 +1,4 @@
-# proyectoSistemas
-Proyecto de sistemas 
+# ProyectoSistemas
+-Jose Manuel González
+-Franco Marino
+-Carlos Sanoja
