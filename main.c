@@ -1,11 +1,13 @@
 #include <stdio.h>
 #include<stdlib.h>
 #include<string.h>
-#include"front.h"
-#include "archivos.h"
+
 
 
 void main(int argc, char const *argv[]) {
+  FILE *archivo;
+ 
+  archivo = fopen("prueba.txt","r");
   int opcion;
   int filas;
   int columnas;
@@ -20,7 +22,9 @@ void main(int argc, char const *argv[]) {
     exit(0);
 
   if(opcion==2)
-  leerArchivo();
+   fscanf(archivo,"%d\n%d",&filas,&columnas);
+ printf("Filas : %d \n,&filas);
+ printf("Columnas : %d \n,&columnas);
 
 
 
