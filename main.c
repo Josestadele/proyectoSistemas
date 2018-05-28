@@ -7,6 +7,9 @@
 
 void main(int argc, char const *argv[]) {
   int opcion;
+  int filas;
+  int columnas;
+
   do{
    printf("                    Bienvenido \n\n\n");
    printf("1.Empezar el juego\n");
@@ -18,6 +21,8 @@ void main(int argc, char const *argv[]) {
 
   if(opcion==2)
   leerArchivo();
+
+
 
    if (opcion==1)
   datosMatriz();
