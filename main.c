@@ -23,8 +23,8 @@ void main(int argc, char const *argv[]) {
 
   if(opcion==2)
    fscanf(archivo,"%d\n%d",&filas,&columnas);
- printf("Filas : %d \n,&filas);
- printf("Columnas : %d \n,&columnas);
+ printf("Filas : %d \n",&filas);
+ printf("Columnas : %d \n",&columnas);
 
 
 
