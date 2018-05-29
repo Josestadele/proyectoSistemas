@@ -25,15 +25,6 @@ int contarVecinos(int *filas, int *columnas, int matriz[20][20])  // cuenta el n
 
 
 
-
-
-
-
-
-
-
-
-
 void llenarMatriz(int *filas, int *columnas, int matriz[20][20]){
 
 	FILE *archivo;
