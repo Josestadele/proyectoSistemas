@@ -4,6 +4,36 @@
 
   int matriz[20][20];
 
+
+
+int contarVecinos(int *filas, int *columnas, int matriz[20][20])  // cuenta el numero de celulas que tiene cada vecino
+{
+  int count,i,j,x,y;
+  for(i = 0; i < *filas; i++){
+            for(j = 0; j < *columnas; j++){
+                count = 0;
+                for(y = -1; y < 2; y++){
+                    for(x = -1; x < 2; x++){
+                        if(x != 0 && y != 0 && matriz[(i + y) % (*filas)][(j + x) % (*columnas)] == 1){
+                        count++;
+                        }
+                    }
+                } 
+            }
+        }
+}
+
+
+
+
+
+
+
+
+
+
+
+
 void llenarMatriz(int *filas, int *columnas, int matriz[20][20]){
 
 	FILE *archivo;
