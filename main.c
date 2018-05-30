@@ -133,8 +133,11 @@ int matrizCopia[row][col];
 
 
 
-matrizCopia[row][col]=matriz[row][col];
-
+for(int i = 1; i <= row; i++) {
+           for(int j = 1; j <= col; j++) {
+            matrizCopia[row][col]=matriz[row][col];
+           }
+      }
     for (int i=1;i<=row;i++){
       for(int j=1;j<=col;j++){
         if(matriz[i][j]==1){
@@ -158,11 +161,11 @@ matrizCopia[row][col]=matriz[row][col];
 
 
 
- for(int i = 1; i < row; i++) {
-            for(int j = 1; j < col; j++) {
-             matriz[row][col]=matrizCopia[row][col];
-            }
-       }
+    for(int i = 1; i <= row; i++) {
+               for(int j = 1; j <= col; j++) {
+                matriz[row][col]=matrizCopia[row][col];
+               }
+          }
 
        for ( int a = 0 ; a < row ; a++ ) {
                  for ( int b= 0 ; b < col ; b++ ) {
@@ -210,8 +213,8 @@ generacionesMatriz(&filas,&columnas,matriz);
 
    if (opcion==2){
 		 system("clear");
-		pid = fork(); 
-  
+		pid = fork();
+
     if(pid < 0) {
         printf("Error");
         exit(1);
@@ -221,7 +224,7 @@ generacionesMatriz(&filas,&columnas,matriz);
 		 printf("Franco Marino\n\n");
 		 printf("Carlos Sanoja\n\n");
 printf("Se agregaron referecias a enlaces, revisar comentarios en esta seccion del codigo\n");
-        exit(0); 
+        exit(0);
     } else  {
         wait(NULL);
     }
