@@ -130,6 +130,9 @@ int row= *filas;
 int col= *columnas;
 int matrizCopia[row][col];
 
+
+
+
 matrizCopia[row][col]=matriz[row][col];
 
     for (int i=1;i<=row;i++){
@@ -151,6 +154,9 @@ matrizCopia[row][col]=matriz[row][col];
         }
       }
     }
+
+
+
 
  for(int i = 1; i < row; i++) {
             for(int j = 1; j < col; j++) {
