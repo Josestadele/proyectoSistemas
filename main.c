@@ -37,6 +37,38 @@ int contarVecinos(int fila,int columna,int matriz[20][20]) {
     return vecinos;
 }
 
+void generacionesMatriz(int *filas, int *columnas,int matriz[20][20]){
+int vecinos=0;
+int row= *filas;
+int col= *columnas;
+int matrizCopia[row][col];
+
+matrizCopia[row][col]=matriz[row][col];
+
+    for (int i=1;i<=row;i++){
+      for(int j=1;j<=col;j++){
+        if(matriz[i][j]==1){
+          vecinos=contarVecinos(row,col,matriz);
+          if((vecinos==3)||(vecinos==2)){
+            matrizCopia[i][j]=0;
+          }
+
+        }
+        else{
+          if ((matriz[i][j]==0)) {
+          vecinos=contarVecinos(row,col,matriz);
+          if((vecinos==3)||(vecinos==2)){
+          matrizCopia[i][j]=1;
+          }
+          }
+        }
+      }
+    }
+
+matriz[row][col]=matrizCopia[row][col];
+
+}
+
 /*void processGeneration(int *filas, int *columnas,int matriz[20][20]) {
     int population = 0;
     int neighbors;
@@ -146,7 +178,11 @@ llenarMatriz(&filas,&columnas,matriz);
 
 imprimirMatriz(&filas,&columnas,matriz);
 
+sleep(1000);
 
+generacionesMatriz(&filas,&columnas,matriz);
+
+imprimirMatriz(&filas,&columnas,matriz);
 
 
 }
