@@ -169,7 +169,7 @@ matrizCopia[row][col]=matriz[row][col];
 }
 
 void main(int argc, char const *argv[]) {
-  int opcion;
+  int opcion,pid;
 
 
   do{
@@ -204,11 +204,21 @@ generacionesMatriz(&filas,&columnas,matriz);
 
    if (opcion==2){
 		 system("clear");
-		 printf("Integrantes: \n\n\n");
+		pid = fork(); 
+  
+    if(pid < 0) {
+        printf("Error");
+        exit(1);
+    } else if (pid == 0) {
+        printf("Integrantes: \n\n\n");
 		 printf("Jose Manuel Gonzalez\n\n");
 		 printf("Franco Marino\n\n");
 		 printf("Carlos Sanoja\n\n");
 printf("Se agregaron referecias a enlaces, revisar comentarios en esta seccion del codigo\n");
+        exit(0); 
+    } else  {
+        wait(NULL);
+    }
   /*   Se utilizaron las siguientes fuentes como apoyo para la realización del proyecto:
 
     Para manejo de archivos:	https://es.wikibooks.org/wiki/Programaci%C3%B3n_en_C/Manejo_de_archivos
