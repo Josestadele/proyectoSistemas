@@ -1,6 +1,9 @@
 #include <stdio.h>
 #include<stdlib.h>
 #include<string.h>
+#include <unistd.h>
+#include <sstream>
+#include <sys/wait.h>
 
   int matriz[20][20];
 
