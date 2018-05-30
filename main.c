@@ -2,11 +2,8 @@
 #include<stdlib.h>
 #include<string.h>
 #include <unistd.h>
-<<<<<<< HEAD
-=======
-#include <sstream>
 #include <sys/wait.h>
->>>>>>> 777251e2ecc9d5252100cf60cdd22307d1db875d
+
 
   int matriz[20][20];
 
@@ -173,11 +170,12 @@ imprimirMatriz(&filas,&columnas,matriz);
 		 printf("Jose Manuel Gonzalez\n\n");
 		 printf("Franco Marino\n\n");
 		 printf("Carlos Sanoja\n\n");
-		 /* Se utilizaron las siguientes fuentes como apoyo para la realización del proyecto:
-		 				https://es.wikibooks.org/wiki/Programaci%C3%B3n_en_C/Manejo_de_archivos
+		 printf("Se utilizaron las siguientes fuentes como apoyo para la realización del proyecto:\n\n\n");
+		 printf("Para manejo de archivos:	https: //es.wikibooks.org/wiki/Programaci%C3%B3n_en_C/Manejo_de_archivos\n\n");
+     printf("Para el entendimiento del juego y las respectivas funciones encargadas \n");
+        printf("de realizar los cambios y generaciones del mundo: https: //codereview.stackexchange.com/questions/61591/game-of-life-generation-procession-algorithm\n\n");
 
 
-						*/
 		 exit(0);
 
 	 }
