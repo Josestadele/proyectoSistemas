@@ -158,7 +158,14 @@ matrizCopia[row][col]=matriz[row][col];
             }
        }
 
-       imprimirMatriz(filas,columnas,matrizCopia);
+       for ( int a = 0 ; a < row ; a++ ) {
+                 for ( int b= 0 ; b < col ; b++ ) {
+                     printf("%d ",matrizCopia[a][b]);
+                 }
+                 printf("\n");}
+
+
+
 }
 
 void main(int argc, char const *argv[]) {
@@ -190,7 +197,7 @@ for(int n=1;n<=num;n++){
 printf("\n\n\n");
 generacionesMatriz(&filas,&columnas,matriz);
 
-imprimirMatriz(&filas,&columnas,matriz);
+
 }
 
 }
