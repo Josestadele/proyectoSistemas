@@ -11,31 +11,42 @@
 
 int contarVecinos(int fila,int columna,int matriz[20][20]) {
     int vecinos = 0;
+
+    if(columna!=1){
     if(matriz[fila][columna-1]=1)
-    vecinos++;
+    vecinos++;}
 
+    if(columna!=20){
     if(matriz[fila][columna+1]=1)
-    vecinos++;
+    vecinos++;}
 
+    if(fila!=20){
+    if(matriz[fila-1][columna]=1)
+    vecinos++;}
+
+    if(fila!=1){
     if(matriz[fila+1][columna]=1)
-    vecinos++;
+    vecinos++;}
 
+    if((columna!=1)&&(fila!=20)){
     if(matriz[fila-1][columna-1]=1)
-    vecinos++;
+    vecinos++;}
 
-    if(matriz[fila+1][columna-1]=1)
-    vecinos++;
-
+    if((columna!=20)&&(fila!=1)){
     if(matriz[fila+1][columna+1]=1)
-    vecinos++;
+    vecinos++;}
 
-    if(matriz[fila-1][columna-1]=1)
-    vecinos++;
+    if((columna!=1)&&(fila!=1)){
+    if(matriz[fila+1][columna-1]=1)
+    vecinos++;}
 
+    if((columna!=20)&&(fila!=20)){
     if(matriz[fila-1][columna+1]=1)
-    vecinos++;
-    return vecinos;
-}
+    vecinos++;}
+
+  }
+
+
 
 void generacionesMatriz(int *filas, int *columnas,int matriz[20][20]){
 int vecinos=0;
