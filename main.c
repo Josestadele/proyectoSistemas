@@ -9,42 +9,35 @@
 
 
 
-/*int contarVecinos(int *filas, int *columnas, int matriz[20][20])  // cuenta el numero de celulas que tiene cada vecino
-{
-  int count,i,j,x,y;
-  for(i = 0; i < *filas; i++){
-            for(j = 0; j < *columnas; j++){
-                count = 0;
-                for(y = -1; y < 2; y++){
-                    for(x = -1; x < 2; x++){
-                        if(x != 0 && y != 0 && matriz[(i + y) % (*filas)][(j + x) % (*columnas)] == 1){
-                        count++;
-                        }
-                    }
-                }
-            }
-        }
+int contarVecinos(int fila,int columna,int matriz[20][20]) {
+    int vecinos = 0;
+    if(matriz[fila][columna-1]=1)
+    vecinos++;
 
-    return count;
-} */
+    if(matriz[fila][columna+1]=1)
+    vecinos++;
 
+    if(matriz[fila+1][columna]=1)
+    vecinos++;
 
-int countNeighbors(int *filas, int *columnas,int matriz[20][20]) {
-    int neighbors = 0;
-    for(int i = *filas - 1; i < *columnas + 2; i++) {
-        for(int j = *columnas - 1; j < *columnas + 2; j++) {
-            if (i == *filas && j == *columnas) {
-                continue;
-            }
-            if (i > -1 && j > -1 && i < *filas && j < *columnas) {
-                neighbors += matriz[i][j];
-            }
-        }
-    }
-    return neighbors;
+    if(matriz[fila-1][columna-1]=1)
+    vecinos++;
+
+    if(matriz[fila+1][columna-1]=1)
+    vecinos++;
+
+    if(matriz[fila+1][columna+1]=1)
+    vecinos++;
+
+    if(matriz[fila-1][columna-1]=1)
+    vecinos++;
+
+    if(matriz[fila-1][columna+1]=1)
+    vecinos++;
+    return vecinos;
 }
 
-void processGeneration(int *filas, int *columnas,int matriz[20][20]) {
+/*void processGeneration(int *filas, int *columnas,int matriz[20][20]) {
     int population = 0;
     int neighbors;
     int tempGrid[*filas][*columnas];
@@ -80,7 +73,7 @@ void processGeneration(int *filas, int *columnas,int matriz[20][20]) {
             matriz[i][j] = tempGrid[i][j];
         }
     }
-}
+}*/
 
 
 
@@ -152,13 +145,7 @@ system("clear");
 llenarMatriz(&filas,&columnas,matriz);
 
 imprimirMatriz(&filas,&columnas,matriz);
-sleep(1000);
 
-processGeneration(&filas,&columnas,matriz);
-
-
-sleep(1000);
-imprimirMatriz(&filas,&columnas,matriz);
 
 
 
@@ -170,12 +157,15 @@ imprimirMatriz(&filas,&columnas,matriz);
 		 printf("Jose Manuel Gonzalez\n\n");
 		 printf("Franco Marino\n\n");
 		 printf("Carlos Sanoja\n\n");
-		 printf("Se utilizaron las siguientes fuentes como apoyo para la realización del proyecto:\n\n\n");
-		 printf("Para manejo de archivos:	https: //es.wikibooks.org/wiki/Programaci%C3%B3n_en_C/Manejo_de_archivos\n\n");
-     printf("Para el entendimiento del juego y las respectivas funciones encargadas \n");
-        printf("de realizar los cambios y generaciones del mundo: https: //codereview.stackexchange.com/questions/61591/game-of-life-generation-procession-algorithm\n\n");
+printf("Se agregaron referecias a enlaces, revisar comentarios en esta seccion del codigo\n");
+  /*   Se utilizaron las siguientes fuentes como apoyo para la realización del proyecto:
 
+    Para manejo de archivos:	https://es.wikibooks.org/wiki/Programaci%C3%B3n_en_C/Manejo_de_archivos
 
+    Para el entendimiento del juego y las respectivas funciones encargadas
+  de realizar los cambios y generaciones del mundo: https://codereview.stackexchange.com/questions/61591/game-of-life-generation-procession-algorithm
+
+*/
 		 exit(0);
 
 	 }
