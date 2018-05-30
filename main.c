@@ -2,6 +2,11 @@
 #include<stdlib.h>
 #include<string.h>
 #include <unistd.h>
+<<<<<<< HEAD
+=======
+#include <sstream>
+#include <sys/wait.h>
+>>>>>>> 777251e2ecc9d5252100cf60cdd22307d1db875d
 
   int matriz[20][20];
 
@@ -151,9 +156,9 @@ llenarMatriz(&filas,&columnas,matriz);
 
 imprimirMatriz(&filas,&columnas,matriz);
 sleep(1000);
-printf("aja\n");
+
 processGeneration(&filas,&columnas,matriz);
-printf("aja2\n");
+
 
 sleep(1000);
 imprimirMatriz(&filas,&columnas,matriz);
