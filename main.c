@@ -51,44 +51,6 @@ int contarVecinos(int fila,int columna,int matriz[20][20]) {
 
 
 
-/*void processGeneration(int *filas, int *columnas,int matriz[20][20]) {
-    int population = 0;
-    int neighbors;
-    int tempGrid[*filas][*columnas];
-    for(int i = 0; i < *filas; i++) {
-        for(int j = 0; j < *columnas; j++) {
-            if (matriz[i][j] == -1) {
-                continue;
-            }
-            neighbors = countNeighbors(i, j,matriz);
-            if (matriz[i][j] == 0) {
-                if (neighbors == 3) {
-                    tempGrid[i][j] = 1;
-                } else {
-                    tempGrid[i][j] = 0;
-                }
-            } else if (matriz[i][j] == 1) {
-                if (neighbors < 2 || neighbors > 3) {
-                    tempGrid[i][j] = 0;
-                } else {
-                    tempGrid[i][j] = 1;
-                }
-            }
-        }
-    }
-    for(int i = 0; i < *filas; i++) {
-        for(int j = 0; j < *columnas; j++) {
-            if (matriz[i][j] == -1) {
-                continue;
-            }
-            if (tempGrid[i][j] == 1) {
-                population++;
-            }
-            matriz[i][j] = tempGrid[i][j];
-        }
-    }
-}*/
-
 
 
 void llenarMatriz(int *filas, int *columnas, int matriz[20][20]){
