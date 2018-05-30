@@ -43,7 +43,7 @@ int contarVecinos(int fila,int columna,int matriz[20][20]) {
     if((columna!=20)&&(fila!=20)){
     if(matriz[fila-1][columna+1]=1)
     vecinos++;}
-
+ return vecinos;
   }
 
 
@@ -124,20 +124,6 @@ matrizCopia[row][col]=matriz[row][col];
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 void llenarMatriz(int *filas, int *columnas, int matriz[20][20]){
 
 	FILE *archivo;
@@ -188,17 +174,22 @@ system("clear");
     exit(0);
 
   if(opcion==1){
+    int num=0;
  system("clear");
 llenarMatriz(&filas,&columnas,matriz);
 
 imprimirMatriz(&filas,&columnas,matriz);
 
-sleep(1000);
+printf("\n\nIndique cantidad de generaciones:\n");
+scanf("%d",&num);
 
+for(int n=1;n<=num;n++){
+
+printf("\n\n\n");
 generacionesMatriz(&filas,&columnas,matriz);
 
 imprimirMatriz(&filas,&columnas,matriz);
-
+}
 
 }
 
