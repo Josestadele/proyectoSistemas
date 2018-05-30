@@ -76,7 +76,11 @@ matrizCopia[row][col]=matriz[row][col];
       }
     }
 
-matriz[row][col]=matrizCopia[row][col];
+ for(int i = 1; i < row; i++) {
+            for(int j = 1; j < col; j++) {
+             matriz[row][col]=matrizCopia[row][col];
+            }
+       }
 
 }
 
