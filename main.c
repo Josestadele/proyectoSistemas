@@ -178,7 +178,7 @@ system("clear");
   if(opcion==1){
     int num,n=0;
  system("clear");
-   
+
 
 
 
@@ -190,7 +190,7 @@ scanf("%d",&n);
 CrearProc(n,&filas,&columnas,matriz);
 printf("\n\nIndique cantidad de generaciones:\n");
 scanf("%d",&num);
-printf("%d\n",contarVecinos(0,2,matriz) );
+//printf("%d\n",contarVecinos(0,2,matriz) );
 
 for(int n=1;n<=num;n++){
 printf("\n\n\n");
@@ -226,6 +226,7 @@ printf("Se agregaron referecias a enlaces, revisar comentarios en esta seccion d
     Para el entendimiento del juego y las respectivas funciones encargadas
   de realizar los cambios y generaciones del mundo: https://codereview.stackexchange.com/questions/61591/game-of-life-generation-procession-algorithm
 
+    Para entender las condiciones y modificacion de la matriz: http://www.forosdelweb.com/f96/juego-vida-c-completo-969605/
 */
 		 exit(0);
 
