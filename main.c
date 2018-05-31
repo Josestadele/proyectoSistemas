@@ -12,42 +12,37 @@
 
 
 
-int contarVecinos(int fila,int columna,int matriz[20][20]) {
+int contarVecinos(int row,int col,int matriz[20][20]) {
     int vecinos = 0;
+    int i=row;
+    int j=col;
+    if(i>0 && j>0 && matriz[i-1][j-1]==1){
+              vecinos++;
+            }
+            if(i>0 && matriz[i-1][j]==1){
+                vecinos++;
+            }
+            if(i>0 && j<20 && matriz[i-1][j+1]==1){
+                vecinos++;
+            }
+            if(j>0 && matriz[i][j-1]==1){
+                vecinos++;
+            }
+            if(j<20 && matriz[i][j+1]==1){
+                vecinos++;
+            }
+            if(i<20 && j>0 && matriz[i+1][j-1]==1){
+                vecinos++;
+            }
+            if(i<20 && matriz[i+1][j]==1){
+                vecinos++;
+            }
+            if(i<20 && j<20 && matriz[i+1][j+1]==1){
+                vecinos++;
+            }
 
-    if(columna!=1){
-    if(matriz[fila][columna-1]=1)
-    vecinos++;}
-
-    if(columna!=20){
-    if(matriz[fila][columna+1]=1)
-    vecinos++;}
-
-    if(fila!=20){
-    if(matriz[fila-1][columna]=1)
-    vecinos++;}
-
-    if(fila!=1){
-    if(matriz[fila+1][columna]=1)
-    vecinos++;}
-
-    if((columna!=1)&&(fila!=20)){
-    if(matriz[fila-1][columna-1]=1)
-    vecinos++;}
-
-    if((columna!=20)&&(fila!=1)){
-    if(matriz[fila+1][columna+1]=1)
-    vecinos++;}
-
-    if((columna!=1)&&(fila!=1)){
-    if(matriz[fila+1][columna-1]=1)
-    vecinos++;}
-
-    if((columna!=20)&&(fila!=20)){
-    if(matriz[fila-1][columna+1]=1)
-    vecinos++;}
- return vecinos;
-  }
+  return vecinos;
+}
 
 
 
@@ -90,21 +85,21 @@ void generacionesMatriz(int *filas, int *columnas,int matriz[20][20]){
 int vecinos=0;
 int row= *filas;
 int col= *columnas;
-int matrizCopia[row][col];
+int matrizCopia[20][20];
 
 
 
+for(int i=0;i<*filas;i++){
+       for(int j=0;j<*columnas;j++)
+             matrizCopia[i][j]=matriz[i][j];
+}
 
-for(int i = 1; i <= row; i++) {
-           for(int j = 1; j <= col; j++) {
-            matrizCopia[row][col]=matriz[row][col];
-           }
-      }
-    for (int i=1;i<=row;i++){
-      for(int j=1;j<=col;j++){
+
+    for (int i=0;i<row;i++){
+      for(int j=0;j<col;j++){
         if(matriz[i][j]==1){
           vecinos=contarVecinos(row,col,matriz);
-          if((vecinos==3)||(vecinos==2)){
+          if((vecinos!=3)&&(vecinos!=2)){
             matrizCopia[i][j]=0;
           }
 
@@ -112,7 +107,7 @@ for(int i = 1; i <= row; i++) {
         else{
           if ((matriz[i][j]==0)) {
           vecinos=contarVecinos(row,col,matriz);
-          if((vecinos==3)||(vecinos==2)){
+          if(vecinos==3){
           matrizCopia[i][j]=1;
           }
           }
@@ -122,18 +117,12 @@ for(int i = 1; i <= row; i++) {
 
 
 
-
-    for(int i = 1; i <= row; i++) {
-               for(int j = 1; j <= col; j++) {
+    for(int i = 0; i < row; i++) {
+               for(int j = 0; j <col; j++) {
                 matriz[row][col]=matrizCopia[row][col];
                }
           }
 
-       for ( int a = 0 ; a < row ; a++ ) {
-                 for ( int b= 0 ; b < col ; b++ ) {
-                     printf("%d ",matrizCopia[a][b]);
-                 }
-                 printf("\n");}
 
 
 
@@ -163,7 +152,7 @@ system("clear");
         exit(1);
     } else if (pid == 0) {
       llenarMatriz(&filas,&columnas,matriz);
-      imprimirMatriz(&filas,&columnas,matriz); 
+      imprimirMatriz(&filas,&columnas,matriz);
         exit(0);
     } else  {
         wait(NULL);
@@ -176,6 +165,7 @@ for(int n=1;n<=num;n++){
 
 printf("\n\n\n");
 generacionesMatriz(&filas,&columnas,matriz);
+imprimirMatriz(&filas,&columnas,matriz);
 
 
 }
