@@ -156,9 +156,18 @@ system("clear");
   if(opcion==1){
     int num=0;
  system("clear");
-llenarMatriz(&filas,&columnas,matriz);
+   pid = fork();
 
-imprimirMatriz(&filas,&columnas,matriz);
+    if(pid < 0) {
+        printf("Error");
+        exit(1);
+    } else if (pid == 0) {
+      llenarMatriz(&filas,&columnas,matriz);
+      imprimirMatriz(&filas,&columnas,matriz); 
+        exit(0);
+    } else  {
+        wait(NULL);
+    }
 
 printf("\n\nIndique cantidad de generaciones:\n");
 scanf("%d",&num);
