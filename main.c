@@ -101,7 +101,8 @@ for(int i=0;i<*filas;i++){
           vecinos=contarVecinos(row,col,matriz);
           if((vecinos!=3)&&(vecinos!=2)){
             matrizCopia[i][j]=0;
-          }
+          }else
+          matrizCopia[i][j]=1;
 
         }
         else{
@@ -110,6 +111,8 @@ for(int i=0;i<*filas;i++){
           if(vecinos==3){
           matrizCopia[i][j]=1;
           }
+          else
+          matrizCopia[i][j]=0;
           }
         }
       }
@@ -117,9 +120,9 @@ for(int i=0;i<*filas;i++){
 
 
 
-    for(int i = 0; i < row; i++) {
-               for(int j = 0; j <col; j++) {
-                matriz[row][col]=matrizCopia[row][col];
+    for(int i = 0; i < 20; i++) {
+               for(int j = 0; j <20; j++) {
+                matriz[i][j]=matrizCopia[i][j];
                }
           }
 
@@ -145,24 +148,19 @@ system("clear");
   if(opcion==1){
     int num=0;
  system("clear");
-   pid = fork();
+   
 
-    if(pid < 0) {
-        printf("Error");
-        exit(1);
-    } else if (pid == 0) {
+
+
       llenarMatriz(&filas,&columnas,matriz);
       imprimirMatriz(&filas,&columnas,matriz);
-        exit(0);
-    } else  {
-        wait(NULL);
-    }
+
 
 printf("\n\nIndique cantidad de generaciones:\n");
 scanf("%d",&num);
+printf("%d\n",contarVecinos(0,2,matriz) );
 
 for(int n=1;n<=num;n++){
-
 printf("\n\n\n");
 generacionesMatriz(&filas,&columnas,matriz);
 imprimirMatriz(&filas,&columnas,matriz);
