@@ -131,6 +131,36 @@ for(int i=0;i<*filas;i++){
 
 }
 
+void CrearProc(int n ,int *filas, int *columnas,int matriz[20][20]){
+
+
+int row= *filas;
+int col= *columnas;
+int matrizCopia[20][20];
+
+for (long int f=1;f<=n ;f++){
+        pid_t pid;
+        int x;
+        pid=fork();
+        if(pid){
+            break;
+          //continue;
+        }else{
+
+          generacionesMatriz(row,col,matriz);
+        }
+  }
+
+}
+
+
+
+
+
+
+
+
+
 void main(int argc, char const *argv[]) {
   int opcion,pid;
 
@@ -146,7 +176,7 @@ system("clear");
     exit(0);
 
   if(opcion==1){
-    int num=0;
+    int num,n=0;
  system("clear");
    
 
@@ -155,7 +185,9 @@ system("clear");
       llenarMatriz(&filas,&columnas,matriz);
       imprimirMatriz(&filas,&columnas,matriz);
 
-
+printf("\n\nIndique cantidad de procesos a generar:\n");
+scanf("%d",&n);
+CrearProc(n,&filas,&columnas,matriz);
 printf("\n\nIndique cantidad de generaciones:\n");
 scanf("%d",&num);
 printf("%d\n",contarVecinos(0,2,matriz) );
