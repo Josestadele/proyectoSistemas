@@ -3,13 +3,54 @@
 #include <stdlib.h>
 #include <stdio.h>
 #include <sys/types.h>
+#include <sys/stat.h>
 #include <string.h>
 #include <errno.h>
 #include <dirent.h>
 #include <limits.h>
 
 
-void listar_dir (const char * origen)
+void copy_file(char *ruta,char *destino){
+    
+    FILE *fptr1, *fptr2;
+    char  c;
+ 
+ 
+    // Open one file for reading
+    fptr1 = fopen(ruta, "r");
+    if (fptr1 == NULL)
+    {
+        printf("Cannot open file %s \n", );
+        exit(0);
+    }
+ 
+
+ 
+    // Open another file for writing
+    fptr2 = fopen(destino, "w");
+    if (fptr2 == NULL)
+    {
+        printf("Cannot open file %s \n", destino);
+        exit(0);
+    }
+ 
+    // Read contents from file
+    c = fgetc(fptr1);
+    while (c != EOF)
+    {
+        fputc(c, fptr2);
+        c = fgetc(fptr1);
+    }
+ 
+    printf("\nContents copied to %s", destino);
+ 
+    fclose(fptr1);
+    fclose(fptr2);
+  
+
+}
+
+void listar_dir ( char * origen,char * destino)
 
 {
     DIR * d;
@@ -20,6 +61,7 @@ void listar_dir (const char * origen)
 
     
     printf("abriendo el directorio %s\n",origen);
+    printf("\n");
     
     /* revisa si se puede abrir */
     
@@ -29,8 +71,9 @@ void listar_dir (const char * origen)
         exit (EXIT_FAILURE);
     }
     while (1) {
+        
         struct dirent * entry;
-        const char * d_name;
+        char * d_name;
 
         /* obtiene entradas subsecuentes. */
         entry = readdir (d);
@@ -38,9 +81,10 @@ void listar_dir (const char * origen)
             /*  si no hay entradas  */
             break;
         }
+        
         d_name = entry->d_name;
         /* imprime el nombre del archivo y el directorio. */
-	printf ("%s/%s\n", origen, d_name);
+	    printf ("%s/%s\n", origen, d_name);
 
 
         /* revisa si es un directorio */
@@ -59,8 +103,9 @@ void listar_dir (const char * origen)
                     fprintf (stderr, " tamaño del Path fuera de rango.\n");
                     exit (EXIT_FAILURE);
                 }
-                /* realiza la llamada recursiva con el nuevo path. */
-                listar_dir (path);
+                copy_file(path,destino);/* realiza la llamada recursiva con el nuevo path. */
+                listar_dir (path,destino);
+                
             }
 	    }
     }
@@ -73,9 +118,22 @@ void listar_dir (const char * origen)
 }
 
 
-int main(int argc, char const *argv[])
+int main(int argc, char *argv[])
 {
-    
-    listar_dir ("/Users/krlos/Documents/7mo Semestre"); /* ponen el path a abrir */
+    // Directorio de origen
+    char origen[100];
+    char destino[100];
+    // Input del directorio
+    printf("Introduzca el directorio:\n ");
+    scanf("%s", origen);
+    printf("\n");
+    printf("Introduzca la direccion del destino:\n ");
+    scanf("%s",destino);
+    // llamada de la función
+    listar_dir (origen,destino);
     return 0;
+
+
+
+
 }
