@@ -103,8 +103,9 @@ void listar_dir ( char * origen,char * destino)
                     fprintf (stderr, " tamaño del Path fuera de rango.\n");
                     exit (EXIT_FAILURE);
                 }
-                copy_file(path,destino);/* realiza la llamada recursiva con el nuevo path. */
+                /* realiza la llamada recursiva con el nuevo path. */
                 listar_dir (path,destino);
+		copy_file(path,destino);
                 
             }
 	    }
