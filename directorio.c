@@ -9,44 +9,49 @@
 #include <dirent.h>
 #include <limits.h>
 
+/* Rutina para que copie */
+void copy_file(char *ruta,char *destino) {
+ struct dirent*df;
+ DIR * d ;
+ d = opendir (destino);
 
-void copy_file(char *ruta,char *destino){
-    
-    FILE *fptr1, *fptr2;
-    char  c;
- 
- 
-    // Open one file for reading
-    fptr1 = fopen(ruta, "r");
-    if (fptr1 == NULL)
-    {
-        printf("Cannot open file %s \n", );
-        exit(0);
+    if (! d) {
+        fprintf (stderr, " No se puede abrir el directorio '%s': %s\n",
+                 destino, strerror (errno));
+        exit (EXIT_FAILURE);
     }
- 
 
- 
-    // Open another file for writing
-    fptr2 = fopen(destino, "w");
-    if (fptr2 == NULL)
-    {
-        printf("Cannot open file %s \n", destino);
-        exit(0);
-    }
- 
-    // Read contents from file
-    c = fgetc(fptr1);
-    while (c != EOF)
-    {
-        fputc(c, fptr2);
-        c = fgetc(fptr1);
-    }
- 
-    printf("\nContents copied to %s", destino);
- 
-    fclose(fptr1);
-    fclose(fptr2);
+while(df == readdir(d)){
+
+    FILE*copy=fopen(ruta,"r");
   
+    if(copy) {
+
+     printf("\n leyendo %s archivo...",ruta);
+     char strDestFile[PATH_MAX];
+     sprintf(strDestFile, "%s/%s",destino,ruta);
+     printf("\n archivo copiado = %s\n", strDestFile);           
+    
+     FILE* copy2  = fopen(strDestFile, "w");    /*File Pointer to write in file*/
+                if(copy2)
+                {
+                    char buffer[PATH_MAX];    /*Buffer to store files content*/
+
+                        while(fgets(buffer,PATH_MAX, copy))
+                        {
+                            fputs(buffer,copy2);
+                        }
+                    fclose(copy2);
+                }
+
+                 else{
+                 printf("\n no es posible abrir el archivo %s", strDestFile);
+                }
+    fclose(copy);
+    }
+
+}
+ closedir(d);
 
 }
 
@@ -83,10 +88,15 @@ void listar_dir ( char * origen,char * destino)
         }
         
         d_name = entry->d_name;
-        /* imprime el nombre del archivo y el directorio. */
+      
 	    printf ("%s/%s\n", origen, d_name);
 
-
+        if (entry->d_type == DT_REG) {
+    
+        copy_file(d_name,destino);
+        
+        }
+        
         /* revisa si es un directorio */
         if (entry->d_type == DT_DIR) {
 
@@ -105,7 +115,6 @@ void listar_dir ( char * origen,char * destino)
                 }
                 /* realiza la llamada recursiva con el nuevo path. */
                 listar_dir (path,destino);
-		copy_file(path,destino);
                 
             }
 	    }
