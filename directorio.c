@@ -10,7 +10,7 @@
 #include <limits.h>
 
 /* Rutina para que copie */
-void copy_file(char *ruta,char *destino) {
+void copy_file(char * ruta ,char *destino) {
  struct dirent*df;
  DIR * d ;
  d = opendir (destino);
@@ -21,7 +21,7 @@ void copy_file(char *ruta,char *destino) {
         exit (EXIT_FAILURE);
     }
 
-while(df == readdir(d)){
+ while((df =readdir(d)) != NULL) {
 
     FILE*copy=fopen(ruta,"r");
   
@@ -91,11 +91,7 @@ void listar_dir ( char * origen,char * destino)
       
 	    printf ("%s/%s\n", origen, d_name);
 
-        if (entry->d_type == DT_REG) {
-    
-        copy_file(d_name,destino);
-        
-        }
+      
         
         /* revisa si es un directorio */
         if (entry->d_type == DT_DIR) {
@@ -113,12 +109,22 @@ void listar_dir ( char * origen,char * destino)
                     fprintf (stderr, " tamaño del Path fuera de rango.\n");
                     exit (EXIT_FAILURE);
                 }
-                /* realiza la llamada recursiva con el nuevo path. */
+               
+             /* realiza la llamada recursiva con el nuevo path. */
                 listar_dir (path,destino);
-                
+           
             }
-	    }
+	    
+        }
+        
+            if(entry->d_type==DT_REG) {
+
+             copy_file(d_name,destino);
+             }
+    
+    
     }
+        
     /*  cierra el directorio */
     if (closedir (d)) {
         fprintf (stderr, " No se puede abrir '%s': %s\n",
